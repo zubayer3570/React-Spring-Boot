@@ -1,9 +1,14 @@
 import React from 'react';
+import BlogCard from './BlogCard';
 
 const BlogList = ({ blogsList }) => {
     return (
         <div>
-            {console.log(blogsList)}
+            <div>
+                {
+                   blogsList?.arr.map(blog => <BlogCard blog={blog} key={blog.name} />) 
+                }
+            </div>
         </div>
     );
 };
