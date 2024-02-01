@@ -1,20 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router';
 import BlogCard from '../components/BlogCard';
+import { Link } from 'react-router-dom';
 
 const ReadBlog = () => {
     const router = useParams()
+    const location = useLocation()
+    const navigate = useNavigate()
     const [blog, setBlog] = useState({});
     useEffect(() => {
-        fetch("http://localhost:8080/get-blog/" + router.name)
+        fetch("http://localhost:8080/get-blog/" + router.name.split("%20").join(""))
             .then(res => res.json())
-            .then(data => setBlog(data))
+            .then(data => data._id? setBlog(data) :"")
     }, [])
+
+    const deleteBlog = () => {
+        fetch("http://localhost:8080/delete-blog", {
+            method: "DELETE",
+            body: blog._id
+        })
+            .then(res => navigate('/'))
+    }
+
+    const editBlog = () => {
+        console.log(location)
+        navigate('/update-blog', {state: {...blog, pathname: location.pathname}},)
+    }
+
+
     return (
-        <div>
-            <p style={{textAlign: "center", fontWeight: "bold"}} >{blog?.name}</p>
-            <p style={{textAlign: "center", fontWeight: "500"}} >{blog?.author}</p>
-            <p style={{textAlign: "center"}} >{blog?.text}</p>
+        <div className='px-8 mt-4'>
+            <p className='text-center font-bold text-[30px]' >{blog?.name}</p>
+            <p className='text-[12px] font-bold'>By {blog?.author}</p>
+            <p>{blog?.text}</p>
+            <button onClick={deleteBlog} className='font-bold px-2 py-1 mt-8 rounded-md bg-red-500 text-white mr-2'>Delete this Blog +</button>
+            <button onClick={editBlog} className='font-bold px-2 py-1 mt-8 rounded-md bg-blue-500 text-white'>Edit Blog</button>
         </div>
     );
 };

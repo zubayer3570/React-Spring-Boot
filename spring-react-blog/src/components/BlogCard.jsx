@@ -9,15 +9,16 @@ const BlogCard = ({blog}) => {
     }
 
     return (
-        <div onClick={read} style={{marginTop: "10px"}}>
-            <div>
+        <div style={{marginTop: "10px"}} className='shadow-lg rounded-md m-4 p-4 font-bold'>
+            <div className='text-green-500 text-center text-[20px]'>
                 {blog.name}
             </div>
-            <div>
-                {blog.author}
+            <div className='text-[grey] text-[11px]'>
+                <span className='text-[8px]' >By</span> {" " + blog.author}
             </div>
             <div>
-                {blog?.text?.substring(0, 20)}
+                {blog?.text?.substring(0, 30) + "... "}
+                <button onClick={read} className='text-[13px] text-orange-500'>Read more</button>
             </div>
         </div>
     );

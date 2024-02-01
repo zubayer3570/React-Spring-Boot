@@ -15,10 +15,16 @@ const Homepage = () => {
     }, [])
 
     return (
-        <div>
-            <SearchBox blogsList={{ arr, setArr }} />
+        <div className='px-8'>
+            <div className='flex justify-between px-4 mt-4'>
+                <p className='font-bold text-[22px]'>Z-Spring Blogs</p>
+                {console.log(arr)}
+                <SearchBox blogsList={{ arr, setArr }} />
+            </div>
             <BlogList blogsList={{ arr, setArr }} />
-            <Link to={"/add-blog"}>Add a Blog</Link>
+            <div className='flex justify-center'>
+                <Link to={"/add-blog"} className='font-bold px-2 py-1 rounded-md bg-green-500 text-white'>Add a Blog +</Link>
+            </div>
         </div>
     );
 };
