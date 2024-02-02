@@ -20,7 +20,7 @@ const Updatepage = () => {
             author: e.target.author.value,
             text: e.target.text.value,
         }
-        fetch("http://localhost:8080/update-blog", {
+        fetch("https://spring-boot-blog.onrender.com/update-blog", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

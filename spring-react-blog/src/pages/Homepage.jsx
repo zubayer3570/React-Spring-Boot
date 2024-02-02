@@ -9,16 +9,31 @@ const Homepage = () => {
     const [arr, setArr] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/allBlogs")
+        fetch("https://spring-boot-blog.onrender.com/allBlogs")
             .then(res => res.json())
             .then(data => setArr(data))
     }, [])
 
+    const showSearchBox = () =>{
+        const searchBoxContainer = document.getElementById("searchBoxContainer")
+        if(searchBoxContainer.style.height == "0px"){
+            searchBoxContainer.style.height = "50px"
+        } else{
+            searchBoxContainer.style.height = "0px"
+        }
+    }
+
     return (
         <div className='px-8'>
             <div className='flex justify-between px-4 mt-4'>
-                <p className='font-bold text-[22px]'>Z-Spring Blogs</p>
+                <p className='font-bold text-[22px] lg:text-[22px]'>Z-Spring Blogs</p>
                 {console.log(arr)}
+                <div className='hidden lg:block'>
+                    <SearchBox blogsList={{ arr, setArr }} />
+                </div>
+                <img onClick={showSearchBox} id='searchIcon' className='w-[30px] block lg:hidden' src="/search.svg" alt="" />
+            </div>
+            <div id='searchBoxContainer' className='h-0 block lg:hidden overflow-hidden'>
                 <SearchBox blogsList={{ arr, setArr }} />
             </div>
             <BlogList blogsList={{ arr, setArr }} />

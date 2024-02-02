@@ -4,7 +4,7 @@ import BlogCard from './BlogCard';
 const BlogList = ({ blogsList }) => {
     return (
         <div>
-            <div className='grid grid-cols-4'>
+            <div className='grid grid-cols-1 lg:grid-cols-4'>
                 {
                    blogsList?.arr.map(blog => <BlogCard blog={blog} key={blog.name} />) 
                 }

@@ -9,13 +9,13 @@ const ReadBlog = () => {
     const navigate = useNavigate()
     const [blog, setBlog] = useState({});
     useEffect(() => {
-        fetch("http://localhost:8080/get-blog/" + router.name.split("%20").join(""))
+        fetch("https://spring-boot-blog.onrender.com/get-blog/" + router.name.split("%20").join(""))
             .then(res => res.json())
             .then(data => data._id? setBlog(data) :"")
     }, [])
 
     const deleteBlog = () => {
-        fetch("http://localhost:8080/delete-blog", {
+        fetch("https://spring-boot-blog.onrender.com/delete-blog", {
             method: "DELETE",
             body: blog._id
         })
