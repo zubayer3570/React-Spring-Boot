@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBox from '../components/SearchBox';
 import BlogList from '../components/BlogList';
-import BlogCard from '../components/BlogCard';
-import AddBlog from '../components/AddBlog';
 
 const Homepage = () => {
     const [arr, setArr] = useState([]);
@@ -16,10 +14,10 @@ const Homepage = () => {
 
     const showSearchBox = () =>{
         const searchBoxContainer = document.getElementById("searchBoxContainer")
-        if(searchBoxContainer.style.height == "0px"){
+        if(searchBoxContainer.clientHeight == 0){
             searchBoxContainer.style.height = "50px"
         } else{
-            searchBoxContainer.style.height = "0px"
+            searchBoxContainer.style.height = 0
         }
     }
 
@@ -27,8 +25,7 @@ const Homepage = () => {
         <div className='px-8'>
             <div className='flex justify-between px-4 mt-4'>
                 <p className='font-bold text-[22px] lg:text-[22px]'>Z-Spring Blogs</p>
-                {console.log(arr)}
-                <div className='hidden lg:block'>
+                <div id='test' className='hidden lg:block'>
                     <SearchBox blogsList={{ arr, setArr }} />
                 </div>
                 <img onClick={showSearchBox} id='searchIcon' className='w-[30px] block lg:hidden' src="/search.svg" alt="" />
