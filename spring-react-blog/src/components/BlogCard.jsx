@@ -9,7 +9,7 @@ const BlogCard = ({blog}) => {
     }
 
     return (
-        <div style={{marginTop: "10px"}} className='shadow-lg rounded-md m-4 p-4 font-bold'>
+        <div className='shadow-lg rounded-md m-4 p-4 font-bold'>
             <div className='text-green-500 text-center text-[20px]'>
                 {blog.name}
             </div>
