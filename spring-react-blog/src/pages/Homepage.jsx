@@ -24,7 +24,7 @@ const Homepage = () => {
     return (
         <div className='px-8'>
             <div className='flex justify-between px-4 mt-4'>
-                <p className='font-bold text-[22px] lg:text-[22px]'>Z-Spring Blogs</p>
+                <Link to='/' className='font-bold text-[22px] lg:text-[22px]'>Z-Spring Blogs</Link>
                 <div id='test' className='hidden lg:block'>
                     <SearchBox blogsList={{ arr, setArr }} />
                 </div>

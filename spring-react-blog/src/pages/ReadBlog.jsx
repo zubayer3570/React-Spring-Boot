@@ -11,7 +11,7 @@ const ReadBlog = () => {
     useEffect(() => {
         fetch("https://spring-boot-blog.onrender.com/get-blog/" + router.name.split("%20").join(""))
             .then(res => res.json())
-            .then(data => data._id? setBlog(data) :"")
+            .then(data => data._id ? setBlog(data) : "")
     }, [])
 
     const deleteBlog = () => {
@@ -23,13 +23,13 @@ const ReadBlog = () => {
     }
 
     const editBlog = () => {
-        console.log(location)
-        navigate('/update-blog', {state: {...blog, pathname: location.pathname}},)
+        navigate('/update-blog', { state: { ...blog, pathname: location.pathname } },)
     }
 
 
     return (
         <div className='px-8 mt-4'>
+            <Link to='/' className='font-bold text-[22px] lg:text-[22px]'>Z-Spring Blogs</Link>
             <p className='text-center font-bold text-[30px]' >{blog?.name}</p>
             <p className='text-[12px] font-bold'>By {blog?.author}</p>
             <p>{blog?.text}</p>
