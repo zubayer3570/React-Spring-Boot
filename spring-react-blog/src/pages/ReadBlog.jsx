@@ -9,13 +9,16 @@ const ReadBlog = () => {
     const navigate = useNavigate()
     const [blog, setBlog] = useState({});
     useEffect(() => {
-        fetch("https://spring-boot-blog.onrender.com/get-blog/" + router.name.split("%20").join(""))
+        fetch("http://localhost:8080/get-blog/" + router._id)
             .then(res => res.json())
-            .then(data => data._id ? setBlog(data) : "")
+            .then(data => {
+                console.log(data)
+                return data._id ? setBlog(data) : ""
+            })
     }, [])
 
     const deleteBlog = () => {
-        fetch("https://spring-boot-blog.onrender.com/delete-blog", {
+        fetch("http://localhost:8080/delete-blog", {
             method: "DELETE",
             body: blog._id
         })
@@ -32,6 +35,7 @@ const ReadBlog = () => {
             <Link to='/' className='font-bold text-[22px] lg:text-[22px]'>Z-Spring Blogs</Link>
             <p className='text-center font-bold text-[30px]' >{blog?.name}</p>
             <p className='text-[12px] font-bold'>By {blog?.author}</p>
+            <p className='text-[13px]'>Published: {blog.date}</p>
             <p>{blog?.text}</p>
             <button onClick={deleteBlog} className='font-bold px-2 py-1 mt-8 rounded-md bg-red-500 text-white mr-2'>Delete this Blog +</button>
             <button onClick={editBlog} className='font-bold px-2 py-1 mt-8 rounded-md bg-blue-500 text-white'>Edit Blog</button>

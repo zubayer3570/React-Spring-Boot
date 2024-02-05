@@ -9,7 +9,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Homepage />} ></Route>
-      <Route path='/blogs/:name' element={<ReadBlog />}></Route>
+      <Route path='/blogs/:_id' element={<ReadBlog />}></Route>
       <Route path='/add-blog' element={<AddBlog />}></Route>
       <Route path='/update-blog' element={<Updatepage />}></Route>
     </Routes>

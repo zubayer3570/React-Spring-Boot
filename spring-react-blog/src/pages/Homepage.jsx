@@ -7,7 +7,7 @@ const Homepage = () => {
     const [arr, setArr] = useState([]);
 
     useEffect(() => {
-        fetch("https://spring-boot-blog.onrender.com/allBlogs")
+        fetch("http://localhost:8080/allBlogs")
             .then(res => res.json())
             .then(data => setArr(data))
     }, [])

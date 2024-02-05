@@ -17,10 +17,11 @@ const Updatepage = () => {
         const updatedBlog = {
             _id: blog._id,
             name: e.target.name.value,
+            date: blog.date,
             author: e.target.author.value,
             text: e.target.text.value,
         }
-        fetch("https://spring-boot-blog.onrender.com/update-blog", {
+        fetch("http://localhost:8080/update-blog", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -28,7 +29,7 @@ const Updatepage = () => {
             body: JSON.stringify(updatedBlog)
         })
             .then(res => res.json())
-            .then(data => navigate("/blogs/" + updatedBlog.name))
+            .then(data => navigate("/blogs/" + updatedBlog._id))
     }
 
     return (

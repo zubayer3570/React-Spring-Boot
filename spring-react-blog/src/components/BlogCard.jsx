@@ -5,7 +5,7 @@ const BlogCard = ({blog}) => {
 
     const navigate = useNavigate();
     const read = () =>{
-        navigate("/blogs/" + blog.name)
+        navigate("/blogs/" + blog._id)
     }
 
     return (
