@@ -9,7 +9,7 @@ const ReadBlog = () => {
     const navigate = useNavigate()
     const [blog, setBlog] = useState({});
     useEffect(() => {
-        fetch("http://localhost:8080/get-blog/" + router._id)
+        fetch("https://spring-boot-blog.onrender.com/get-blog/" + router.name.split("%20").join(""))
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -18,7 +18,7 @@ const ReadBlog = () => {
     }, [])
 
     const deleteBlog = () => {
-        fetch("http://localhost:8080/delete-blog", {
+        fetch("https://spring-boot-blog.onrender.com/delete-blog", {
             method: "DELETE",
             body: blog._id
         })

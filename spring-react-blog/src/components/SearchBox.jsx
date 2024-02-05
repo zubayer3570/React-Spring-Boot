@@ -13,7 +13,7 @@ const SeachBox = ({ blogsList }) => {
             searchText = e.target.searchText.value;
         }
         const keyword = searchText.length == 0 ? "all" : searchText
-        fetch("http://localhost:8080/search/" + keyword)
+        fetch("https://spring-boot-blog.onrender.com/search/" + keyword)
             .then(res => res.json())
             .then(data => blogsList.setArr(data))
     }

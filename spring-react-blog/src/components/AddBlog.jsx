@@ -11,7 +11,7 @@ const AddBlog = () => {
 
         const blog = { author, name, text }
 
-        fetch("http://localhost:8080/add-blog", {
+        fetch("https://spring-boot-blog.onrender.com/add-blog", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
