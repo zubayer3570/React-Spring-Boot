@@ -29,7 +29,7 @@ const Updatepage = () => {
             body: JSON.stringify(updatedBlog)
         })
             .then(res => res.json())
-            .then(data => navigate("/blogs/" + updatedBlog._id))
+            .then(data => navigate("/blogs/" + updatedBlog.name))
     }
 
     return (
